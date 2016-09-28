@@ -7006,7 +7006,7 @@ then
                           LINK_CC="${CC} -brtl"
                           LINK_CXX="${CXX} -brtl" ;;
                        *) SHARED_COMPILE_FLAG="-fPIC"
-                          SHARED_BUILD_FLAG="-shared" ;;
+                          SHARED_BUILD_FLAG="-dynamiclib -undefined dynamic_lookup" ;;
    esac
    FFLAGS="${FFLAGS} ${SHARED_COMPILE_FLAG}"
    CFLAGS="${CFLAGS} ${SHARED_COMPILE_FLAG}"
@@ -7019,8 +7019,8 @@ then
       BUILD_CC_SHARED="${CC} ${SHARED_BUILD_FLAG}"
    fi
    BUILD_CXX_SHARED="${CXX} ${SHARED_BUILD_FLAG}"
-   SHARED_SET_SONAME="-Wl,-soname,"
-   SHARED_OPTIONS="-Wl,-z,defs"
+   SHARED_SET_SONAME="-install_name "
+   SHARED_OPTIONS=""
 fi
 
 BUILD_PYTHON=0
